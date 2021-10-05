@@ -1,0 +1,519 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "Car_Advisor",
+    "version": "1",
+    "intents": [
+      {
+        "rejectionStatement": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "OK {First_Name}, if you have any concerns in regards to our financing program, feel free to contact us at (305)-555-5555 or visit our website."
+            }
+          ]
+        },
+        "name": "MOJOS_car_bot",
+        "version": "45",
+        "fulfillmentActivity": {
+          "type": "ReturnIntent"
+        },
+        "sampleUtterances": [
+          "Do you have financing available",
+          "my monthly income is person income",
+          "I have been at my job for person emp length",
+          "I would like to buy a car",
+          "I am looking for financing"
+        ],
+        "slots": [
+          {
+            "sampleUtterances": [],
+            "slotType": "Car",
+            "slotTypeVersion": "1",
+            "obfuscationSetting": "DEFAULT_OBFUSCATION",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Great! you came to the right place! Are you looking to finance?"
+                },
+                {
+                  "contentType": "PlainText",
+                  "content": "Perfect! Would you like me to process the application?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[]}",
+              "maxAttempts": 2
+            },
+            "priority": 5,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "Car"
+          },
+          {
+            "sampleUtterances": [
+              "I would like to apply for {Financing}"
+            ],
+            "slotType": "AMAZON.FinancialService",
+            "obfuscationSetting": "DEFAULT_OBFUSCATION",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Would you like to apply for credit?"
+                },
+                {
+                  "contentType": "PlainText",
+                  "content": "Are you looking for financing?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\"}",
+              "maxAttempts": 2
+            },
+            "priority": 6,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "Financing"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.DURATION",
+            "obfuscationSetting": "DEFAULT_OBFUSCATION",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "{age} ok. How long have you been employed?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\"}",
+              "maxAttempts": 2
+            },
+            "priority": 3,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "person_emp_length"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.NUMBER",
+            "obfuscationSetting": "DEFAULT_OBFUSCATION",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "How much do you make per month?"
+                },
+                {
+                  "contentType": "PlainText",
+                  "content": "What is your monthly income?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\"}",
+              "maxAttempts": 2
+            },
+            "priority": 4,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "person_income"
+          },
+          {
+            "sampleUtterances": [
+              "I would like to get {ServiceType}",
+              "Do you guys offer {ServiceType}"
+            ],
+            "slotType": "AMAZON.Service",
+            "obfuscationSetting": "DEFAULT_OBFUSCATION",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Would you like to apply for credit?"
+                },
+                {
+                  "contentType": "PlainText",
+                  "content": "Are you interested in financing?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\"}",
+              "maxAttempts": 2
+            },
+            "priority": 7,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "ServiceType"
+          }
+        ],
+        "confirmationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Thank you {First_Name}, for choosing us. let's get started!!! Do you want to learn more in regards to our financing program?"
+            },
+            {
+              "contentType": "PlainText",
+              "content": "If you are looking for financing, I'd be more than happy to help you!"
+            }
+          ],
+          "maxAttempts": 3
+        },
+        "conclusionStatement": {
+          "messages": [
+            {
+              "groupNumber": 1,
+              "contentType": "PlainText",
+              "content": "Would you like to see if you qualify for financing?"
+            }
+          ]
+        }
+      },
+      {
+        "rejectionStatement": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Ok, I will not schedule an appointment. But, If you have any questions feel to contact MOJOS.com BUM BUM or (305) GO-MOJOS"
+            }
+          ]
+        },
+        "name": "MakeAppointment",
+        "version": "4",
+        "fulfillmentActivity": {
+          "type": "ReturnIntent"
+        },
+        "sampleUtterances": [
+          "test drive appointment",
+          "book an {AppointmentType}",
+          "book an appointment",
+          "I would like to book an appointment",
+          "credit appointment"
+        ],
+        "slots": [
+          {
+            "sampleUtterances": [
+              "I would like a {AppointmentType}"
+            ],
+            "slotType": "AppointmentValueType",
+            "slotTypeVersion": "1",
+            "obfuscationSetting": "DEFAULT_OBFUSCATION",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What type of appointment would you like to schedule?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[]}",
+              "maxAttempts": 2
+            },
+            "priority": 1,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "AppointmentType"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.DATE",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "When should I schedule your appointment?"
+                },
+                {
+                  "contentType": "PlainText",
+                  "content": "A {AppointmentType} will take about [ExpectedDuration] minutes. What day works best for you?"
+                },
+                {
+                  "contentType": "PlainText",
+                  "content": "{Time} on what day?"
+                },
+                {
+                  "contentType": "PlainText",
+                  "content": "When should I schedule your {AppointmentType}?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\"}",
+              "maxAttempts": 2
+            },
+            "priority": 2,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "Date"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.AT_CITY",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Miami or Ft. Lauderdale?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 4,
+            "name": "Location"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.TIME",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "At what time should I schedule your appointment?"
+                },
+                {
+                  "contentType": "PlainText",
+                  "content": "At what time on {Date}?"
+                },
+                {
+                  "contentType": "PlainText",
+                  "content": "At what time do you want to schedule the {AppointmentType}?"
+                },
+                {
+                  "contentType": "PlainText",
+                  "content": "At what time should I schedule your appointment?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\"}",
+              "maxAttempts": 2
+            },
+            "priority": 3,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "Time"
+          }
+        ],
+        "confirmationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "{Time} is available, should I go ahead and book your appointment?"
+            }
+          ],
+          "maxAttempts": 3
+        }
+      },
+      {
+        "rejectionStatement": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "OK {First_Name}, if you have any concerns in regards to our financing program, feel free to contact us at (305)-555-5555 or visit our website."
+            }
+          ]
+        },
+        "name": "Yes",
+        "version": "10",
+        "fulfillmentActivity": {
+          "type": "ReturnIntent"
+        },
+        "sampleUtterances": [
+          "Okay",
+          "Yes",
+          "Sure",
+          "Of course",
+          "Why not",
+          "Ok",
+          "Yeah"
+        ],
+        "slots": [
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.NUMBER",
+            "obfuscationSetting": "DEFAULT_OBFUSCATION",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What is your age?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\"}",
+              "maxAttempts": 2
+            },
+            "priority": 1,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "age"
+          }
+        ],
+        "confirmationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Thank you {First_Name}, for choosing us. let's get started!!! Do you want to learn more in regards to our financing program?"
+            }
+          ],
+          "maxAttempts": 3
+        },
+        "conclusionStatement": {
+          "messages": [
+            {
+              "groupNumber": 1,
+              "contentType": "PlainText",
+              "content": "Ok great. now can you please tell me what is your age?"
+            }
+          ]
+        }
+      },
+      {
+        "rejectionStatement": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "OK {Full_Name}, if you have any concerns in regards to our financing program, feel free to contact us at (305)-555-5555 or visit our website."
+            }
+          ]
+        },
+        "name": "Name",
+        "version": "14",
+        "fulfillmentActivity": {
+          "type": "ReturnIntent"
+        },
+        "sampleUtterances": [
+          "My name is {Full_Name}",
+          "{Full_Name}"
+        ],
+        "slots": [
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.US_FIRST_NAME",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What is your full name?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 3,
+            "name": "Full_Name"
+          }
+        ],
+        "confirmationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Thank you {Full_Name}, for choosing us. let's get started!!! How can we assist you?"
+            }
+          ],
+          "maxAttempts": 3
+        },
+        "conclusionStatement": {
+          "messages": [
+            {
+              "groupNumber": 1,
+              "contentType": "PlainText",
+              "content": "Thanks {Full_Name},  Can I ask you few questions to qualify you?"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Hello",
+        "version": "5",
+        "fulfillmentActivity": {
+          "type": "ReturnIntent"
+        },
+        "sampleUtterances": [
+          "Hello",
+          "Hi",
+          "Greetings",
+          "Good morning",
+          "Good afternoon",
+          "Good evening"
+        ],
+        "slots": [],
+        "conclusionStatement": {
+          "messages": [
+            {
+              "groupNumber": 1,
+              "contentType": "PlainText",
+              "content": "Hi I am with the MOJOS group. Can I have your full name?"
+            }
+          ]
+        }
+      }
+    ],
+    "slotTypes": [
+      {
+        "description": "Car Models",
+        "name": "Car",
+        "version": "1",
+        "enumerationValues": [
+          {
+            "value": "Car"
+          }
+        ],
+        "valueSelectionStrategy": "ORIGINAL_VALUE"
+      },
+      {
+        "description": "Appointment Type",
+        "name": "AppointmentValueType",
+        "version": "1",
+        "enumerationValues": [
+          {
+            "value": "Appointment"
+          }
+        ],
+        "valueSelectionStrategy": "ORIGINAL_VALUE"
+      }
+    ],
+    "voiceId": "Salli",
+    "childDirected": false,
+    "locale": "en-US",
+    "idleSessionTTLInSeconds": 300,
+    "clarificationPrompt": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, can you please repeat that?"
+        }
+      ],
+      "maxAttempts": 5
+    },
+    "abortStatement": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, I could not understand. Goodbye."
+        }
+      ]
+    },
+    "detectSentiment": false,
+    "enableModelImprovements": true
+  }
+}
